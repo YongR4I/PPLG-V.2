@@ -45,7 +45,7 @@ export default function Preloader() {
           }`}
           style={{ fontFamily: '"InterDisplay ExtraLight", sans-serif' }}
         >
-          Software& Gim Development
+          Software & Games Development
         </h1>
       </div>
     </div>
