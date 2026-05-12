@@ -6,8 +6,13 @@ import { format } from 'date-fns';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const pathname = usePathname();
   const tabs = [
@@ -54,8 +59,8 @@ export default function Navbar() {
     return () => clearInterval(timer);
   }, []);
 
-  const formattedDate = `IDN, ${format(currentTime, 'dd/MM')}`;
-  const formattedTime = format(currentTime, 'HH:mm:ss');
+  const formattedDate = isMounted ? `IDN, ${format(currentTime, 'dd/MM')}` : '';
+  const formattedTime = isMounted ? format(currentTime, 'HH:mm:ss') : '';
 
   return (
     <>

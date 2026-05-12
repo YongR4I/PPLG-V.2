@@ -36,7 +36,7 @@ export default function Hero() {
       {/* <VideoIntro /> */}
       {/* <HeroContent /> */}
       {/* <PlayPauseButton /> */}
-      {/* <Preloader /> */}
+      <Preloader />
 
       {/* Bottom Left: Instagram */}
       <div className="absolute bottom-4 left-8 z-50 pointer-events-auto mix-blend-difference">
