@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PPLG V.2 Class Website
 
-## Getting Started
+I built this website as a digital archive and portfolio for my class, PPLG (Software and Game Development). As software development students, we spend years writing code, building projects, and experiencing the typical struggles of learning how to build software. I wanted a centralized place to document our journey, showcase our work, and leave a digital footprint of our time together.
 
-First, run the development server:
+Rather than using a generic template, I designed this landing page to reflect the aesthetics of modern web development. It serves as both a class gallery and a practical application of the frontend engineering concepts we learn.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technical Implementation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is built with a modern React stack, focusing on clean UI and fluid interactions. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS v4
+- **Core Interactions:** Custom React hooks for state management and CSS transitions for glassmorphism effects.
+- **Typography:** Inter Display for structural elements and PP Neue Montreal for specific UI accents.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Key technical details include a custom preloader built with CSS keyframes, a glassmorphic expandable navigation bar, and real-time clock synchronization using date-fns. The layout relies heavily on absolute positioning and z-index layering to manage the interplay between the background media, UI overlays, and transition states.
 
-## Learn More
+## Local Development
 
-To learn more about Next.js, take a look at the following resources:
+If you want to run this project locally to explore the codebase:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YongR4I/PPLG-V.2.git
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Navigate to the directory:
+   ```bash
+   cd PPLG-V.2
+   ```
 
-## Deploy on Vercel
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The application will be available at http://localhost:3000.
+
+## Context
+
+This project is actively maintained. Future updates will include the integration of individual student portfolios, a dedicated photo gallery, and write-ups of our class projects.
+
+Created by Raihan Daffa.
