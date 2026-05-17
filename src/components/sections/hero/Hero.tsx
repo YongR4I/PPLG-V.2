@@ -38,28 +38,9 @@ export default function Hero() {
       {/* <PlayPauseButton /> */}
       <Preloader />
 
-      {/* Bottom Left: Instagram */}
-      <div className="absolute bottom-4 left-8 z-50 pointer-events-auto mix-blend-difference">
-        <a 
-          href="https://instagram.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-white text-[10px] tracking-wide font-medium uppercase border-b border-white pb-1 hover:text-white/70 hover:border-white/70 transition-colors"
-          style={{ fontFamily: '"PP Neue Montreal", sans-serif' }}
-        >
-          INSTAGRAM
-        </a>
-      </div>
+      {/* Bottom Left: Instagram (Removed from here, managed in layout/navbar) */}
 
-      {/* Bottom Right: Created By */}
-      <div className="absolute bottom-4 right-8 z-50 pointer-events-none mix-blend-difference">
-        <span 
-          className="text-white text-[10px] tracking-wide font-medium uppercase"
-          style={{ fontFamily: '"PP Neue Montreal", sans-serif' }}
-        >
-          Copyright © Raihan Daffa
-        </span>
-      </div>
+      {/* Bottom Right: Created By (Removed from here, managed in layout/navbar) */}
     </section>
   );
 }

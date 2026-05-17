@@ -14,6 +14,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Canela Light';
+  src: url('/Font/Canela-Light-Trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,6 +32,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-inter-display: 'InterDisplay', sans-serif;
+  --font-canela: 'Canela Light', serif;
 }
 
 @media (prefers-color-scheme: dark) {

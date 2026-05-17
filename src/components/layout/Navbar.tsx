@@ -27,55 +27,79 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 px-8 py-6 flex items-center justify-between font-inter-display pointer-events-none">
+      <nav className={`fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-8 flex items-center justify-between font-inter-display pointer-events-none transition-colors duration-500 ${isMenuOpen ? 'text-white' : 'text-white'}`}>
         {/* Left Side: Logo/Text replacing IDN Date */}
-        <div className="text-white text-[13px] tracking-wide uppercase pointer-events-auto mix-blend-difference font-medium">
+        <div className={`text-[12px] md:text-[13px] tracking-wide uppercase pointer-events-auto font-medium transition-opacity duration-500 ${isMenuOpen ? 'opacity-100 mix-blend-normal' : 'mix-blend-difference'}`}>
           PPLG V.2
         </div>
 
-        {/* Center: Clock */}
-        <div className="absolute left-1/2 -translate-x-1/2 text-white text-[13px] tracking-wide tabular-nums pointer-events-auto mix-blend-difference">
+        {/* Center: Clock (Hidden when menu is open, hidden on mobile) */}
+        <div className={`hidden md:block absolute left-1/2 -translate-x-1/2 text-[13px] tracking-wide tabular-nums pointer-events-auto mix-blend-difference transition-opacity duration-300 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           {formattedTime}
         </div>
 
-        {/* Right Side: Hamburger Menu */}
-        <div className="pointer-events-auto mix-blend-difference cursor-pointer" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <div className="flex flex-col justify-center items-end w-8 h-8 gap-1.5">
-            <span className={`w-6 h-[1.5px] bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-[7.5px]' : ''}`}></span>
-            <span className={`w-6 h-[1.5px] bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`w-6 h-[1.5px] bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-[7.5px]' : ''}`}></span>
-          </div>
+        {/* Right Side: Menu / CLOSE */}
+        <div className={`pointer-events-auto cursor-pointer flex items-center transition-all duration-500 ${isMenuOpen ? 'mix-blend-normal' : 'mix-blend-difference'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? (
+            <div className="text-[12px] md:text-[13px] tracking-wide uppercase font-medium hover:opacity-70 transition-opacity">
+              CLOSE
+            </div>
+          ) : (
+            <div className="text-[12px] md:text-[13px] tracking-wide uppercase font-medium group relative overflow-hidden">
+              <span className="relative z-10">MENU</span>
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            </div>
+          )}
         </div>
       </nav>
 
+      {/* Global Footer info (Visible on Home & Menu) */}
+      <div className={`fixed bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex justify-between text-white/80 text-[10px] md:text-[11px] font-inter-display tracking-widest uppercase transition-all duration-500 z-50 pointer-events-none mix-blend-difference ${isMenuOpen ? 'mix-blend-normal' : ''}`}>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="pointer-events-auto hover:text-white transition-colors border-b border-white/50 hover:border-white pb-1">INSTAGRAM</a>
+        <span>COPYRIGHT © RAIHAN DAFFA</span>
+      </div>
+
       {/* Fullscreen Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/90 backdrop-blur-md z-40 flex flex-col items-center justify-center transition-all duration-500 ${
-          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      <div
+        className={`fixed inset-0 h-[100dvh] w-full bg-[#0D0D0D] z-40 flex flex-col justify-center px-6 md:px-[10vw] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex flex-col items-center gap-8 text-white font-inter-display text-3xl tracking-[0.2em]">
-          <Link 
-            href="/" 
-            onClick={() => setIsMenuOpen(false)}
-            className={`transition-all duration-300 hover:text-[#FF5722] ${pathname === '/' ? 'text-[#FF5722]' : 'text-white'}`}
-          >
-            HOME
-          </Link>
-          <Link 
-            href="/about" 
-            onClick={() => setIsMenuOpen(false)}
-            className={`transition-all duration-300 hover:text-[#FF5722] ${pathname === '/about' ? 'text-[#FF5722]' : 'text-white'}`}
-          >
-            ABOUT
-          </Link>
-          <Link 
-            href="/photo" 
-            onClick={() => setIsMenuOpen(false)}
-            className={`transition-all duration-300 hover:text-[#FF5722] ${pathname === '/photo' ? 'text-[#FF5722]' : 'text-white'}`}
-          >
-            PHOTO
-          </Link>
+        {/* Menu Items Container - group/menu lets us detect hover on ANY item to dim the others */}
+        <div className="flex flex-col w-full max-w-7xl mx-auto group/menu mt-16 md:mt-0">
+          {/* Menu Items */}
+          <div className="w-full relative">
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="group/item flex items-end justify-between py-4 md:py-6 border-b border-white/20 hover:border-white transition-colors duration-500 w-full"
+            >
+              <span className={`font-inter-display text-[11px] md:text-sm font-medium mb-1.5 md:mb-3 transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none delay-[150ms]' : 'opacity-0 blur-sm'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500`}>01</span>
+              <span className={`font-canela text-[64px] sm:text-[80px] md:text-[112px] leading-[0.85] uppercase text-right tracking-tight transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none translate-y-0 delay-[200ms]' : 'opacity-0 blur-md translate-y-4'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500 md:group-hover/item:-translate-y-2`}>HOME</span>
+            </Link>
+          </div>
+
+          <div className="w-full relative">
+            <Link
+              href="/about"
+              onClick={() => setIsMenuOpen(false)}
+              className="group/item flex items-end justify-between py-4 md:py-6 border-b border-white/20 hover:border-white transition-colors duration-500 w-full"
+            >
+              <span className={`font-inter-display text-[11px] md:text-sm font-medium mb-1.5 md:mb-3 transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none delay-[250ms]' : 'opacity-0 blur-sm'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500`}>02</span>
+              <span className={`font-canela text-[64px] sm:text-[80px] md:text-[112px] leading-[0.85] uppercase text-right tracking-tight transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none translate-y-0 delay-[300ms]' : 'opacity-0 blur-md translate-y-4'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500 md:group-hover/item:-translate-y-2`}>ABOUT</span>
+            </Link>
+          </div>
+
+          <div className="w-full relative">
+            <Link
+              href="/gallery"
+              onClick={() => setIsMenuOpen(false)}
+              className="group/item flex items-end justify-between py-4 md:py-6 border-b border-white/20 hover:border-white transition-colors duration-500 w-full"
+            >
+              <span className={`font-inter-display text-[11px] md:text-sm font-medium mb-1.5 md:mb-3 transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none delay-[350ms]' : 'opacity-0 blur-sm'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500`}>03</span>
+              <span className={`font-canela text-[64px] sm:text-[80px] md:text-[112px] leading-[0.85] uppercase text-right tracking-tight transition-all duration-700 ${isMenuOpen ? 'opacity-100 blur-none translate-y-0 delay-[400ms]' : 'opacity-0 blur-md translate-y-4'} text-white group-hover/menu:opacity-30 group-hover/item:!opacity-100 group-hover/menu:duration-500 md:group-hover/item:-translate-y-2`}>GALLERY</span>
+            </Link>
+          </div>
         </div>
       </div>
     </>
