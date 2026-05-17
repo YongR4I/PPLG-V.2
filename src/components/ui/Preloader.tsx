@@ -45,9 +45,9 @@ export default function Preloader() {
           }`}
           style={{ fontFamily: '"InterDisplay ExtraLight", sans-serif' }}
         >
-          Software & Games Development
+          Loading Memories...
         </h1>
-      </div>
+      </div>  
     </div>
   );
 }
