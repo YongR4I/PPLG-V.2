@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import Preloader from '@/components/ui/Preloader';
 import VideoIntro from './VideoIntro';
 import PhotoSlideshow from './PhotoSlideshow';
@@ -12,31 +11,29 @@ import PlayPauseButton from '@/components/ui/PlayPauseButton';
 export default function Hero() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showVideo, setShowVideo] = useState(false); // Atur state perpindahan preloader -> video -> foto
+  const [videoComplete, setVideoComplete] = useState(false);
+
+  const handlePreloaderComplete = () => {
+    setShowVideo(true);
+  };
+
+  const handleVideoComplete = () => {
+    setVideoComplete(true);
+    setShowVideo(false);
+  };
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-black">
       {/*
         Urutan Z-Index (dari bawah ke atas):
-        1. Background Image (z-10)
         2. HeroContent (z-40) -> Muncul setelah video selesai
       */}
 
-      {/* Static Background Image */}
-      <div className="absolute inset-0 z-10">
-        <Image 
-          src="/Image/HeroClass.png" 
-          alt="Hero Background" 
-          fill 
-          className="object-cover"
-          priority
-        />
-      </div>
-
       {/* <PhotoSlideshow /> */}
-      {/* <VideoIntro /> */}
+      {showVideo && <VideoIntro onComplete={handleVideoComplete} />}
       {/* <HeroContent /> */}
       {/* <PlayPauseButton /> */}
-      <Preloader />
+      <Preloader onComplete={handlePreloaderComplete} />
 
       {/* Bottom Left: Instagram (Removed from here, managed in layout/navbar) */}
 
