@@ -115,13 +115,11 @@ export default function VideoIntro({ onComplete }: { onComplete?: () => void }) 
       </div>
 
       {/* Teks Detik Besar di Tengah (Muncul saat Pause) */}
-      {!isPlaying && (
-        <div className="absolute inset-0 z-40 flex items-center justify-center pointer-events-none">
-          <div className="text-white font-inter-display text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium leading-none tracking-tighter mix-blend-difference">
-            {formatHugeTime(currentTime)}
-          </div>
+      <div className={`absolute inset-0 z-40 flex items-center justify-center pointer-events-none transition-all duration-500 ease-out ${isPlaying ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
+        <div className="text-white font-inter-display text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px] font-medium leading-none tracking-tighter mix-blend-difference">
+          {formatHugeTime(currentTime)}
         </div>
-      )}
+      </div>
     </div>
   );
 }
