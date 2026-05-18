@@ -54,9 +54,19 @@ export default function Navbar() {
       </nav>
 
       {/* Global Footer info (Visible on Home & Menu) */}
-      <div className={`fixed bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8 flex justify-between text-white/80 text-[10px] md:text-[11px] font-inter-display tracking-widest uppercase transition-all duration-500 z-50 pointer-events-none mix-blend-difference ${isMenuOpen ? 'mix-blend-normal' : ''}`}>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="pointer-events-auto hover:text-white transition-colors border-b border-white/50 hover:border-white pb-1">INSTAGRAM</a>
-        <span>COPYRIGHT © RAIHAN DAFFA</span>
+      <div className={`fixed bottom-4 left-6 right-6 md:bottom-6 md:left-8 md:right-8 flex items-center justify-between text-white/80 text-[10px] md:text-[11px] font-inter-display tracking-widest uppercase transition-all duration-500 z-50 pointer-events-none mix-blend-difference ${isMenuOpen ? 'mix-blend-normal' : ''}`}>
+        {/* Kontainer Instagram diikat lebarnya agar titik putih aman di tengah */}
+        <div className="w-1/3">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="pointer-events-auto hover:text-white transition-colors border-b border-white/50 hover:border-white pb-1 inline-block">INSTAGRAM</a>
+        </div>
+
+        {/* Bagian tengah dibiarkan kosong agar titik putih dari komponen lain tidak bertabrakan */}
+        <div className="w-1/3"></div>
+
+        {/* Kontainer Copyright diikat lebarnya dan rata kanan */}
+        <div className="w-1/3 text-right">
+          <span className="opacity-80 pb-1 inline-block">BY RAIHAN</span>
+        </div>
       </div>
 
       {/* Fullscreen Menu Overlay */}
