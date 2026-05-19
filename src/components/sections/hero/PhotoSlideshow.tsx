@@ -45,12 +45,14 @@ export default function PhotoSlideshow({ isVisible }: { isVisible: boolean }) {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
-      {/* Container untuk semua gambar, opacity menyesuaikan index */}
+      {/* Container untuk semua gambar, opacity dan blur menyesuaikan index */}
       {IMAGES.map((src, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentIndex ? 'opacity-100' : 'opacity-0'
+          className={`absolute inset-0 transition-all duration-700 ease-out ${
+            index === currentIndex
+              ? 'opacity-100 blur-none scale-100 z-10'
+              : 'opacity-0 blur-md scale-105 z-0'
           }`}
         >
           {/* Gambar khusus Mobile (disembunyikan di ukuran medium ke atas) */}
@@ -74,9 +76,9 @@ export default function PhotoSlideshow({ isVisible }: { isVisible: boolean }) {
           />
         </div>
       ))}
-      
+
       {/* Overlay hitam transparan agar text nantinya mudah dibaca */}
-      <div className="absolute inset-0 bg-black/40 z-10" />
+      <div className="absolute inset-0 bg-black/40 z-20" />
 
       {/* Indikator Titik (Pagination Dots) - Disejajarkan dengan footer */}
       <div className="absolute bottom-[22px] md:bottom-[30px] left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 pointer-events-auto mix-blend-difference">
