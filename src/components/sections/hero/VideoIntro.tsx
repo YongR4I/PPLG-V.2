@@ -83,7 +83,7 @@ export default function VideoIntro({ onComplete }: { onComplete?: () => void }) 
     >
       <video
         ref={videoRef}
-        src="/Vidios/Vidios.mov"
+        src="/Vidios/Intro.mp4"
         className={`w-full h-full object-contain md:object-cover transition-opacity duration-500 ${!isPlaying ? 'opacity-50' : 'opacity-100'}`}
         onEnded={handleVideoEnd}
         playsInline
