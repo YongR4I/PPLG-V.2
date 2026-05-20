@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-8 flex items-center justify-between font-inter-display pointer-events-none transition-colors duration-500 ${isMenuOpen ? 'text-white' : 'text-white'}`}>
+      <nav className={`absolute top-0 left-0 w-full z-50 px-6 py-6 md:px-8 flex items-center justify-between font-inter-display pointer-events-none transition-colors duration-500 ${isMenuOpen ? 'text-white' : 'text-white'}`}>
         {/* Left Side: Logo/Text replacing IDN Date */}
         <div className={`text-[12px] md:text-[13px] tracking-wide uppercase pointer-events-auto font-medium transition-opacity duration-500 ${isMenuOpen ? 'opacity-100 mix-blend-normal' : 'mix-blend-difference'}`}>
           PPLG V.2

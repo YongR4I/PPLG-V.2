@@ -34,10 +34,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-black text-white">
         <SmoothScroll>
           <Navbar />
-          <main className="flex-grow">
+          <main className="relative">
             {children}
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

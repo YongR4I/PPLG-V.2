@@ -34,6 +34,7 @@
   --font-inter-display: 'InterDisplay', sans-serif;
   --font-canela: 'Canela Light', serif;
   --font-ppneue: 'PP Neue Montreal', sans-serif;
+  --font-switzer: 'Switzer', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,3 +55,11 @@ body {
   font-weight: 500;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/Font/Switzer-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
