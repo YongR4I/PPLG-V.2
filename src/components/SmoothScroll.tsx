@@ -15,7 +15,7 @@ export default function SmoothScroll({
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      smoothTouch: true, // Enable smooth scrolling for touch devices/trackpads
+      syncTouch: true, // Use syncTouch for Lenis v1.1.x to enable touch scrolling
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
