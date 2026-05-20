@@ -33,6 +33,7 @@
   --font-mono: var(--font-geist-mono);
   --font-inter-display: 'InterDisplay', sans-serif;
   --font-canela: 'Canela Light', serif;
+  --font-ppneue: 'PP Neue Montreal', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,4 +47,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter-display);
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/Font/ppneuemontreal-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
 }
