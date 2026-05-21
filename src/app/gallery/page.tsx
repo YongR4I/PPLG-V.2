@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const galleries = [
@@ -53,9 +54,10 @@ export default function Gallery() {
       {/* Right Side: Menu Items (Left aligned on mobile) */}
       <div className="absolute left-6 md:left-auto md:right-[15%] lg:right-[20%] xl:right-[25%] top-[35%] pt-8 flex flex-col items-start justify-start z-20">
         {galleries.map((gallery) => (
-          <div
+          <Link
+            href={`/gallery/${gallery.id}`}
             key={gallery.id}
-            className="relative cursor-pointer py-1 md:py-2 group"
+            className="relative cursor-pointer py-1 md:py-2 group block"
             onMouseEnter={() => setActiveGallery(gallery.id)}
           >
             <motion.h2
@@ -67,7 +69,7 @@ export default function Gallery() {
             >
               {gallery.label}
             </motion.h2>
-          </div>
+          </Link>
         ))}
       </div>
       

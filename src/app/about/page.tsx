@@ -35,7 +35,7 @@ const members = [
   { name: "Ragil Rifqi Fadhil Anwar", role: "Game Developer", img: "/Image/About/Member/1945.jpg" },
   { name: "Raihan Daffa", role: "Full-Stack Developer", img: "/Image/About/Member/1946.jpg" },
   { name: "Rakha Pradipta", role: "UI/UX Designer", img: "/Image/About/Member/1947.jpg" },
-  { name: "Siti Asiah", role: "Full-Stack Developer", img: "/Image/About/Member/1948.jpg" },
+  { name: "Siti Asiah", role: "Front End Developer", img: "/Image/About/Member/1948.jpg" },
   { name: "Siti Nayla Muhibah", role: "UI/UX Designer", img: "/Image/About/Member/1949.jpg" },
   { name: "Vio Adytia Syahputra", role: "Front End Developer", img: "/Image/About/Member/1950.jpg" },
   { name: "Yoris Satria Ananda", role: "Front End Developer", img: "/Image/About/Member/1951.jpg" },
@@ -243,7 +243,7 @@ export default function About() {
       </div>
 
       {/* Page 4: Footer Section (slides up over members section) */}
-      <div className="relative z-30 w-full">
+      <div className="relative z-30 w-full mt-[50vh]">
         <footer className="bg-white text-black pt-16 pb-8 px-6 md:px-12 lg:px-16 w-full select-none font-sans rounded-t-[48px] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
           <div className="max-w-[1400px] mx-auto flex flex-col">
 
