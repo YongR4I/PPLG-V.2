@@ -5,11 +5,11 @@ import { usePathname } from 'next/navigation';
 export default function Footer() {
   const pathname = usePathname();
 
-  // Hide on about page — it has its own inline footer for scroll-reveal effect
-  if (pathname === '/about') return null;
+  // Hide on about page and home page
+  if (pathname === '/about' || pathname === '/') return null;
 
   return (
-    <footer className="relative z-20 bg-white text-black pt-16 pb-8 px-6 md:px-12 lg:px-16 w-full select-none font-sans rounded-t-[32px]">
+    <footer className="relative z-20 bg-white text-black pt-16 pb-8 px-6 md:px-12 lg:px-16 w-full select-none font-sans rounded-t-[48px]">
       <div className="max-w-[1400px] mx-auto flex flex-col">
         
         {/* Top Metadata Row: 3 columns */}

@@ -1,35 +1,103 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Lenis from 'lenis';
+import { usePathname } from 'next/navigation';
 
-export default function SmoothScroll({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+/**
+ * src/components/SmoothScroll.tsx
+ * Memberikan efek scrolling yang halus ke seluruh website menggunakan library Lenis.
+ */
+
+export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+
+    // Force manual scroll restoration to prevent browser from hijacking scroll on navigation
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Disable Lenis on mobile devices for better performance/native feel
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) return;
+
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      duration: 1.0, // Dipercepat sedikit dari 1.2
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      syncTouch: true, // Use syncTouch for Lenis v1.1.x to enable touch scrolling
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.8, // Dikurangi agar scroll tidak terasa terlalu berat
+      touchMultiplier: 1.2, // Disamakan agar lebih native di touchpad/touchscreen
+      infinite: false,
     });
 
+    lenisRef.current = lenis;
+
+    let animationFrameId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    animationFrameId = requestAnimationFrame(raf);
+
+    // Lock/Unlock handlers
+    const lockScroll = () => {
+      lenis.stop();
+    };
+    const unlockScroll = () => {
+      lenis.start();
+    };
+
+    window.addEventListener('lock-scroll', lockScroll);
+    window.addEventListener('unlock-scroll', unlockScroll);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
+      lenisRef.current = null;
+      window.removeEventListener('lock-scroll', lockScroll);
+      window.removeEventListener('unlock-scroll', unlockScroll);
     };
+  }, []);
+
+  // Reset scroll to top on route change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    }, 100); // Small delay to ensure content is rendered
+    
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  // Handle custom scroll-to events (e.g., from Navbar)
+  useEffect(() => {
+    const handleScrollTo = (e: any) => {
+      const target = e.detail?.target;
+      const immediate = e.detail?.immediate || false;
+      
+      if (target !== undefined && lenisRef.current) {
+        lenisRef.current.scrollTo(target, { 
+          immediate,
+          duration: immediate ? 0 : 2.0, 
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) 
+        });
+      }
+    };
+
+    window.addEventListener('lenis-scroll-to', handleScrollTo);
+    return () => window.removeEventListener('lenis-scroll-to', handleScrollTo);
   }, []);
 
   return <>{children}</>;

@@ -6,40 +6,41 @@ import { motion, useMotionValue, useAnimationFrame } from 'framer-motion';
 import InfoColumns from '../../components/InfoColumns';
 
 const members = [
-  { name: "Adilatunnisa", role: "UI/UX Engineer", img: "/Image/About/Member/1920.jpg" },
-  { name: "Adrian Maulana Yusup", role: "Frontend Developer", img: "/Image/About/Member/1921.jpg" },
+  { name: "Adilatunnisa", role: "Data Analyst", img: "/Image/About/Member/1920.jpg" },
+  { name: "Adrian Maulana Yusuf", role: "Frontend Developer", img: "/Image/About/Member/1921.jpg" },
   { name: "Ahmad Rizky", role: "Backend Engineer", img: "/Image/About/Member/1922.jpg" },
-  { name: "Alexa Alkahfi Hanan", role: "Full-Stack Developer", img: "/Image/About/Member/1923.jpg" },
+  { name: "Alexa Alkahfi Hanan", role: "Frontend", img: "/Image/About/Member/1923.jpg" },
   { name: "Asril Maulana", role: "Frontend Engineer", img: "/Image/About/Member/1924.jpg" },
   { name: "Aura Aqueeni Ilmira", role: "Backend Developer", img: "/Image/About/Member/1925.jpg" },
-  { name: "Auza Alfarizi Ramadhan", role: "System Analyst", img: "/Image/About/Member/1926.jpg" },
-  { name: "Azka Mortaza ", role: "UI/UX Engineer", img: "/Image/About/Member/1954.jpg" },
-  { name: "Dharma Ksatria Gunawan", role: "Full-Stack Engineer", img: "/Image/About/Member/1927.jpg" },
+  { name: "Auza Alfarizi Ramadhan", role: "Full Stack Web Developer & UI/UX Designer", img: "/Image/About/Member/1926.jpg" },
+  { name: "Azka Mortaza ", role: "Front-End Developer", img: "/Image/About/Member/1954.jpg" },
+  { name: "Dharma Ksatria Gunawan", role: "UI/UX Designer ", img: "/Image/About/Member/1927.jpg" },
   { name: "Diva Ayu Fatmawati", role: "Backend Engineer", img: "/Image/About/Member/1928.jpg" },
-  { name: "Divinka Azani Rachdian", role: "Data Analyst", img: "/Image/About/Member/1929.jpg" },
+  { name: "Divinka Azani Rachdian", role: "Full Stack Developer", img: "/Image/About/Member/1929.jpg" },
   { name: "Hexsa Arizky Sulaiman", role: "Full-Stack Developer", img: "/Image/About/Member/1930.jpg" },
   { name: "Iman Andhika", role: "Frontend Developer", img: "/Image/About/Member/1931.jpg" },
-  { name: "Jayshifa Banyuwana", role: "Database Engineer", img: "/Image/About/Member/1932.jpg" },
+  { name: "Jayshifa Banyuwana", role: "Full Stack Developer", img: "/Image/About/Member/1932.jpg" },
   { name: "Jesselin Roniar", role: "System Analyst", img: "/Image/About/Member/1933.jpg" },
-  { name: "Mahardika Rofiq", role: "Full-Stack Engineer", img: "/Image/About/Member/1934.jpg" },
-  { name: "Malika Thabina Hidayat", role: "Frontend Engineer", img: "/Image/About/Member/1935.jpg" },
-  { name: "Melani Putri", role: "Backend Developer", img: "/Image/About/Member/1936.jpg" },
-  { name: "Muhamad Abdul Rohman", role: "Business Analyst", img: "/Image/About/Member/1937.jpg" },
+  { name: "Mahardika Rofiq", role: "Backend Developer", img: "/Image/About/Member/1934.jpg" },
+  { name: "Malika Thabina Hidayat", role: "Data Analyst", img: "/Image/About/Member/1935.jpg" },
+  { name: "Melani Putri", role: "UI/UX Designer", img: "/Image/About/Member/1936.jpg" },
+  { name: "Muhamad Abdul Rohman", role: "Backend Developer", img: "/Image/About/Member/1937.jpg" },
+  { name: "Muhammad Alfathdry Rausyan", role: "Frontend Developer", img: "/Image/About/Member/1955.jpg" },
   { name: "Muhammad Azmi Ashshidiq Ramadhan", role: "Full-Stack Developer", img: "/Image/About/Member/1939.jpg" },
-  { name: "Muhammad Fauzi Ibnu Kosim", role: "Frontend Developer", img: "/Image/About/Member/1940.jpg" },
+  { name: "Muhammad Fauzi Ibnu Kosim", role: "Full Stack Developer", img: "/Image/About/Member/1940.jpg" },
   { name: "Nabila Indriyanti", role: "Backend Engineer", img: "/Image/About/Member/1941.jpg" },
-  { name: "Putri Salsabila", role: "Data Analyst", img: "/Image/About/Member/1942.jpg" },
-  { name: "Queena Paramitha Supriyadi", role: "Full-Stack Engineer", img: "/Image/About/Member/1943.jpg" },
-  { name: "Ragil Pramana", role: "Frontend Developer", img: "/Image/About/Member/1944.jpg" },
-  { name: "Ragil Rifqi Fadhil Anwar", role: "Backend Developer", img: "/Image/About/Member/1945.jpg" },
+  { name: "Putri Salsabila", role: "Full Stack Developer", img: "/Image/About/Member/1942.jpg" },
+  { name: "Queena Paramitha Supriyadi", role: "UI/UX Designer", img: "/Image/About/Member/1943.jpg" },
+  { name: "Ragil Pramana", role: "Front End Developer", img: "/Image/About/Member/1944.jpg" },
+  { name: "Ragil Rifqi Fadhil Anwar", role: "Game Developer", img: "/Image/About/Member/1945.jpg" },
   { name: "Raihan Daffa", role: "Full-Stack Developer", img: "/Image/About/Member/1946.jpg" },
-  { name: "Rakha Pradipta", role: "System Analyst", img: "/Image/About/Member/1947.jpg" },
-  { name: "Siti Asiah", role: "Full-Stack Engineer", img: "/Image/About/Member/1948.jpg" },
-  { name: "Siti Nayla Muhibah", role: "Frontend Engineer", img: "/Image/About/Member/1949.jpg" },
-  { name: "Vio Adytia Syahputra", role: "Backend Engineer", img: "/Image/About/Member/1950.jpg" },
-  { name: "Yoris Satria Ananda", role: "Business Analyst", img: "/Image/About/Member/1951.jpg" },
-  { name: "Vira Rahmayanti Luniansyah", role: "Full-Stack Developer", img: "/Image/About/Member/1952.jpg" },
-  { name: "Zaafirah Arafi Hariyanto", role: "UI/UX Engineer", img: "/Image/About/Member/1953.jpg" }
+  { name: "Rakha Pradipta", role: "UI/UX Designer", img: "/Image/About/Member/1947.jpg" },
+  { name: "Siti Asiah", role: "Full-Stack Developer", img: "/Image/About/Member/1948.jpg" },
+  { name: "Siti Nayla Muhibah", role: "UI/UX Designer", img: "/Image/About/Member/1949.jpg" },
+  { name: "Vio Adytia Syahputra", role: "Front End Developer", img: "/Image/About/Member/1950.jpg" },
+  { name: "Yoris Satria Ananda", role: "Front End Developer", img: "/Image/About/Member/1951.jpg" },
+  { name: "Vira Rahmayanti Luniansyah", role: "Data Analyst & Front End Developer", img: "/Image/About/Member/1952.jpg" },
+  { name: "Zaafirah Arafi Hariyanto", role: "UI/UX Designer", img: "/Image/About/Member/1953.jpg" }
 ];
 
 export default function About() {
@@ -243,7 +244,7 @@ export default function About() {
 
       {/* Page 4: Footer Section (slides up over members section) */}
       <div className="relative z-30 w-full">
-        <footer className="bg-white text-black pt-16 pb-8 px-6 md:px-12 lg:px-16 w-full min-h-[120vh] select-none font-sans rounded-t-[32px] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
+        <footer className="bg-white text-black pt-16 pb-8 px-6 md:px-12 lg:px-16 w-full select-none font-sans rounded-t-[48px] shadow-[0_-20px_60px_rgba(0,0,0,0.15)]">
           <div className="max-w-[1400px] mx-auto flex flex-col">
 
             {/* Top Metadata Row: 3 columns */}

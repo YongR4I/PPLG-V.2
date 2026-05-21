@@ -26,12 +26,20 @@
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: 'InterDisplay Bold';
+  src: url('/Font/InterDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-inter-display: 'InterDisplay', sans-serif;
+  --font-inter-bold: 'InterDisplay Bold', sans-serif;
   --font-canela: 'Canela Light', serif;
   --font-ppneue: 'PP Neue Montreal', sans-serif;
   --font-switzer: 'Switzer', sans-serif;
