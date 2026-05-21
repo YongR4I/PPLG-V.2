@@ -8,7 +8,6 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
   const [textOpacity, setTextOpacity] = useState(1);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const [progress, setProgress] = useState(0);
   const [showButton, setShowButton] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -63,39 +62,16 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
     return () => clearTimeout(timeoutId);
   }, [phase, currentTextIndex]);
 
-  // Effect untuk Fake Loading
+  // Effect untuk menampilkan tombol setelah ngetik selesai
   useEffect(() => {
     if (phase !== 'loading') return;
 
-    const jumpSteps = [
-      { val: 14, delay: 400 },
-      { val: 35, delay: 900 },
-      { val: 42, delay: 300 },
-      { val: 65, delay: 1000 },
-      { val: 88, delay: 400 },
-      { val: 100, delay: 500 }
-    ];
+    // Lewati animasi angka agar lebih cepat, langsung munculkan tombol ENTER
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 100);
 
-    let timeoutIds: NodeJS.Timeout[] = [];
-    let totalDelay = 0;
-
-    jumpSteps.forEach((step, index) => {
-      totalDelay += step.delay;
-      const id = setTimeout(() => {
-        setProgress(step.val);
-
-        if (index === jumpSteps.length - 1) {
-          setTimeout(() => {
-            setShowButton(true);
-          }, 600);
-        }
-      }, totalDelay);
-      timeoutIds.push(id);
-    });
-
-    return () => {
-      timeoutIds.forEach(clearTimeout);
-    };
+    return () => clearTimeout(timer);
   }, [phase]);
 
   const handleStart = () => {
@@ -108,7 +84,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
 
   if (isHidden) return null;
 
-  const boxScale = 0.3 + (progress / 100) * 0.7;
+  const boxScale = 1; // Animasi angka dihapus, langsung gunakan skala penuh
   const opacity = isDone ? 0 : 1;
 
   return (
@@ -145,27 +121,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
             </button>
           </div>
 
-          <div className={`relative flex flex-col items-center justify-center transition-opacity duration-700 animate-in fade-in zoom-in-95 duration-1000 ${showButton ? 'opacity-0' : 'opacity-100'}`}>
-            <div className="relative flex items-center justify-center">
-              <div
-                className="absolute w-[300px] h-[180px] transition-transform duration-[1500ms] ease-[cubic-bezier(0.22,1,0.36,1)] pointer-events-none"
-                style={{ transform: `scale(${boxScale})` }}
-              >
-                <div className="absolute top-0 left-0 w-6 h-6 border-t-[1px] border-l-[1px] border-white/60"></div>
-                <div className="absolute top-0 right-0 w-6 h-6 border-t-[1px] border-r-[1px] border-white/60"></div>
-                <div className="absolute bottom-0 left-0 w-6 h-6 border-b-[1px] border-l-[1px] border-white/60"></div>
-                <div className="absolute bottom-0 right-0 w-6 h-6 border-b-[1px] border-r-[1px] border-white/60"></div>
-              </div>
 
-              <div className="relative z-10 font-mono text-[16px] md:text-[20px] tracking-widest text-white">
-                {progress}
-              </div>
-            </div>
-          </div>
-
-          <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-widest text-white/80 transition-opacity duration-700 animate-in fade-in slide-in-from-bottom-2 duration-1000 ${showButton ? 'opacity-0' : 'opacity-100'}`}>
-            00:00:{progress.toString().padStart(2, '0')}
-          </div>
         </>
       )}
     </div>

@@ -26,6 +26,7 @@ export default function Hero() {
   const handlePreloaderComplete = () => {
     // Karena kalau sudah pernah nonton preloader akan dimatikan di useEffect,
     // yang masuk ke sini pasti pengunjung baru di sesi ini.
+    setShowPreloader(false);
     setShowVideo(true); // Mainkan video intro
   };
 
