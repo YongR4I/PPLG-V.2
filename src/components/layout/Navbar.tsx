@@ -68,16 +68,17 @@ export default function Navbar() {
 
           {/* Kontainer Copyright diikat lebarnya dan rata kanan */}
           <div className="w-1/3 text-right">
-            <span className="opacity-80 pb-1 inline-block">BY RAIHAN</span>
+            {!pathname.startsWith('/gallery') && (
+              <span className="opacity-80 pb-1 inline-block">CREATE BY RAIHAN</span>
+            )}
           </div>
         </div>
       )}
 
       {/* Fullscreen Menu Overlay */}
       <div
-        className={`fixed inset-0 h-[100dvh] w-full bg-[#0D0D0D] z-40 flex flex-col justify-center px-6 md:px-[10vw] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed inset-0 h-[100dvh] w-full bg-[#0D0D0D] z-40 flex flex-col justify-center px-6 md:px-[10vw] transition-transform duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Menu Items Container - group/menu lets us detect hover on ANY item to dim the others */}
         <div className="flex flex-col w-full max-w-7xl mx-auto group/menu mt-16 md:mt-0">

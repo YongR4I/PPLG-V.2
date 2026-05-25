@@ -14,9 +14,10 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
 
   // Daftar teks yang akan muncul bergantian (tanpa tanda > di dalamnya)
   const textSequence = [
-    "Archiving the moments we cannot pause...",
-    "Compiling our journey through lines of code...",
-    "Calibrating focus..."
+    "PPLG v.2 — Memories,",
+    "Satu seragam, sejuta cerita, dan mimpi-mimpi yang pernah kita bagi.",
+    "Sengaja disimpan di sini, agar tidak pernah hilang dimakan waktu.",
+    "Welcome back, let’s look back and cherish our memories together."
   ];
 
   // Effect untuk Animasi Mengetik Bergantian
@@ -95,7 +96,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
       {/* BAGIAN TEKS NGETIK */}
       {phase !== 'loading' && (
         <div
-          className="font-mono text-[12px] md:text-[14px] text-white/80 transition-opacity duration-500 tracking-wider text-center"
+          className={`font-mono text-[12px] md:text-[14px] text-white/80 transition-opacity duration-500 tracking-wider text-center ${currentTextIndex === 0 ? 'font-semibold' : ''}`}
           style={{ opacity: textOpacity }}
         >
           {currentTextIndex === 0 && <span className="text-white/50 mr-2">{'>'}</span>}
