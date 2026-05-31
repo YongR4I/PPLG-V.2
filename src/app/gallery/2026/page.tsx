@@ -10,15 +10,11 @@ export default function Gallery2026() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const photos = [
-    '/Image/Photo Slider/Dekstop/Dekstop 3.png',
-    '/Image/Photo Slider/Dekstop/Desktop 4.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 5.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 1.png',
-    '/Image/Photo Slider/Dekstop/Desktop 2.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 3.png',
-    '/Image/Photo Slider/Dekstop/Desktop 4.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 5.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 1.png',
+    '/Image/Gallery/2026/IMG-20260308-WA0048.jpg',
+    '/Image/Gallery/2026/IMG-20260308-WA0092.jpg',
+    '/Image/Gallery/2026/IMG-20260421-WA0110.jpg',
+    '/Image/Gallery/2026/IMG_2445.JPG',
+    '/Image/Gallery/2026/IMG_2516.JPG',
   ];
 
   return (

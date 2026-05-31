@@ -10,15 +10,16 @@ export default function Gallery2024() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const photos = [
-    '/Image/Photo Slider/Dekstop/Dekstop 1.png',
-    '/Image/Photo Slider/Dekstop/Desktop 2.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 3.png',
-    '/Image/Photo Slider/Dekstop/Desktop 4.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 5.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 1.png',
-    '/Image/Photo Slider/Dekstop/Desktop 2.png',
-    '/Image/Photo Slider/Dekstop/Dekstop 3.png',
-    '/Image/Photo Slider/Dekstop/Desktop 4.png',
+    '/Image/Gallery/2024/1.jpg',
+    '/Image/Gallery/2024/2.jpg',
+    '/Image/Gallery/2024/3.jpg',
+    '/Image/Gallery/2024/4.jpg',
+    '/Image/Gallery/2024/5.jpg',
+    '/Image/Gallery/2024/6.jpg',
+    '/Image/Gallery/2024/7.jpg',
+    '/Image/Gallery/2024/8.jpg',
+    '/Image/Gallery/2024/9.jpg',
+    '/Image/Gallery/2024/10.jpg',
   ];
 
   return (
